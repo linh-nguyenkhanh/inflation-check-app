@@ -25,13 +25,14 @@ const Root = styled("div")(({ theme }) => ({
   padding: theme.spacing(1),
   // sm, small: 600px
   [theme.breakpoints.up("sm")]: {
-    position: "relative",
-    left: "50%",
-    transform: "translateX(-50%)",
-    margin: "30px",
+    position: "absolute",
+    left: "0",
+    right: "0",
+    top: "0",
+    bottom: "0",
+    margin: "auto",
     height: 300,
     width: 400,
-    
   },
   // md, medium: 900px
   [theme.breakpoints.up("md")]: {
@@ -39,7 +40,6 @@ const Root = styled("div")(({ theme }) => ({
     left: "50%",
     transform: "translateX(-50%)",
     width: 500,
-    
   },
   // lg, large: 1200px
   [theme.breakpoints.up("lg")]: {
@@ -102,7 +102,7 @@ const App = () => {
             color="white"
             textAlign="center"
             mb={2}
-            sx={{ typography: { lg: "h3", sm: "h4", xs: "h6" } }}
+            sx={{ Typography: { lg: "h3", sm: "h4", xs: "h6" } }}
           >
             INFLATION CHECK
           </Typography>
@@ -139,15 +139,15 @@ const App = () => {
                 Loading...
               </Typography>
             ) : (
+              searchResult &&
               searchResult.map((result) => (
                 <Box key={result.toString()}>
-                  <ul key={result.id} style={{ listStyle: "none" }}>
+                  <ul key={result.id}>
                     <li key={result.type}>
                       <Typography
                         variant="h6"
                         sx={{ typography: { lg: "h6", sm: "h7", xs: "body1" } }}
                       >
-                        {" "}
                         <TrendingUpOutlinedIcon /> Inflation Type:&nbsp;{" "}
                         {result.type}
                       </Typography>
@@ -160,10 +160,8 @@ const App = () => {
                         sx={{ typography: { lg: "h6", sm: "h7", xs: "body1" } }}
                       >
                         {" "}
-                        <TimelapseOutlinedIcon /> Inflation Period:
-                        <span style={{ textTransform: "uppercase" }}>
-                          &nbsp; {result.period}
-                        </span>
+                        <TimelapseOutlinedIcon /> Inflation Period: &nbsp;{" "}
+                        <span>{result.period}</span>
                       </Typography>
                     </li>
 
