@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import { styled } from "@mui/material/styles";
 import {
   Box,
   Container,
@@ -10,7 +10,6 @@ import {
 } from "@mui/material";
 
 import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
-import PublicOutlinedIcon from "@mui/icons-material/PublicOutlined";
 import TrendingUpOutlinedIcon from "@mui/icons-material/TrendingUpOutlined";
 import TimelapseOutlinedIcon from "@mui/icons-material/TimelapseOutlined";
 import { Hearts } from "react-loading-icons";
@@ -20,6 +19,33 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
+// xs, extra-small: 0px
+// xl, extra-large: 1536px
+const Root = styled("div")(({ theme }) => ({
+  padding: theme.spacing(1),
+  // sm, small: 600px
+  [theme.breakpoints.up("sm")]: {
+    position: "relative",
+    left: "50%",
+    transform: "translateX(-50%)",
+    margin: "30px",
+    height: 300,
+    width: 400,
+    
+  },
+  // md, medium: 900px
+  [theme.breakpoints.up("md")]: {
+    position: "relative",
+    left: "50%",
+    transform: "translateX(-50%)",
+    width: 500,
+    
+  },
+  // lg, large: 1200px
+  [theme.breakpoints.up("lg")]: {
+    width: 600,
+  },
+}));
 
 const App = () => {
   const [loading, setLoading] = useState(false);
@@ -51,100 +77,124 @@ const App = () => {
   }, [searchTerm]);
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        minHeight: "100vh",
-        borderRadius: "16px",
-      }}
-    >
-      ;
-      <Container
+    <Root>
+      <Box
         sx={{
-          backgroundColor: "blue",
-          width: 600,
-          height: 550,
-          color: "white",
-          borderRadius: "10px",
-          padding: "40px 10px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          minHeight: "100vh",
+          borderRadius: "16px",
         }}
       >
-        <Typography variant="h3" color="white" textAlign="center" mb={2}>
-          INFLATION CHECK
-        </Typography>
-        <FormControl sx={{ display: "flex", margin: "0px 60px" }}>
-          <InputLabel focused variant="outlined" htmlFor="search" />
-          <Input
-            type="text"
-            sx={{
-              color: "blue",
-              background: "white",
-              padding: "10px",
-              fontSize: "20px",
-            }}
-            id="search"
-            disabled={false}
-            variant="outlined"
-            placeholder="Type country name..."
-            value={searchTerm}
-            onChange={(event) => setSearchTerm(event.target.value)}
-          />
-        </FormControl>
-        {error && <div>{error.message}</div>}
-        <Grid2
-          container
-          spacing={0}
-          direction="column"
-          alignItems="center"
-          justifyContent="center"
-          margin="30px"
+        <Container
+          sx={{
+            backgroundColor: "blue",
+            width: 600,
+            height: 500,
+            color: "white",
+            borderRadius: "10px",
+            padding: "30px 10px",
+          }}
         >
-          {loading ? (
-            <Typography variant="h7" textAlign="center">
-              <Hearts /> <br />
-              Loading...
-            </Typography>
-          ) : (
-            searchResult.map((result) => (
-              <div key={result.toString()}>
-                <ul key={result.id} style={{ listStyle: "none" }}>
-                  <li key={result.country}>
-                    <PublicOutlinedIcon />
-                    Country Name: {result.country}
-                  </li>
+          <Typography
+            variant="h3"
+            color="white"
+            textAlign="center"
+            mb={2}
+            sx={{ typography: { lg: "h3", sm: "h4", xs: "h6" } }}
+          >
+            INFLATION CHECK
+          </Typography>
+          <FormControl sx={{ display: "flex", margin: "0px 60px" }}>
+            <InputLabel focused variant="outlined" htmlFor="search" />
+            <Input
+              type="text"
+              sx={{
+                color: "blue",
+                background: "white",
+                padding: "10px",
+                fontSize: "20px",
+              }}
+              id="search"
+              disabled={false}
+              variant="outlined"
+              placeholder="Type country name..."
+              value={searchTerm}
+              onChange={(event) => setSearchTerm(event.target.value)}
+            />
+          </FormControl>
+          {error && <div>{error.message}</div>}
+          <Grid2
+            container
+            spacing={0}
+            direction="column"
+            alignItems="center"
+            justifyContent="center"
+            margin="30px"
+          >
+            {loading ? (
+              <Typography variant="h7" textAlign="center">
+                <Hearts /> <br />
+                Loading...
+              </Typography>
+            ) : (
+              searchResult.map((result) => (
+                <Box key={result.toString()}>
+                  <ul key={result.id} style={{ listStyle: "none" }}>
+                    <li key={result.type}>
+                      <Typography
+                        variant="h6"
+                        sx={{ typography: { lg: "h6", sm: "h7", xs: "body1" } }}
+                      >
+                        {" "}
+                        <TrendingUpOutlinedIcon /> Inflation Type:&nbsp;{" "}
+                        {result.type}
+                      </Typography>
+                    </li>
 
-                  <li key={result.type}>
-                    <TrendingUpOutlinedIcon />
-                    Inflation Type: {result.type}
-                  </li>
+                    <li key={result.period}>
+                      {" "}
+                      <Typography
+                        variant="h6"
+                        sx={{ typography: { lg: "h6", sm: "h7", xs: "body1" } }}
+                      >
+                        {" "}
+                        <TimelapseOutlinedIcon /> Inflation Period:
+                        <span style={{ textTransform: "uppercase" }}>
+                          &nbsp; {result.period}
+                        </span>
+                      </Typography>
+                    </li>
 
-                  <li key={result.period}>
-                    {" "}
-                    <TimelapseOutlinedIcon />
-                    Inflation Period:{" "}
-                    <span style={{ textTransform: "uppercase" }}>
-                      {result.period}
-                    </span>
-                  </li>
+                    <li key={result.monthly_rate_pct}>
+                      <Typography
+                        variant="h6"
+                        sx={{ typography: { lg: "h6", sm: "h7", xs: "body1" } }}
+                      >
+                        {" "}
+                        <CalendarMonthOutlinedIcon /> Monthly Rate: &nbsp;{" "}
+                        {result.monthly_rate_pct}%
+                      </Typography>
+                    </li>
 
-                  <li key={result.monthly_rate_pct}>
-                    <CalendarMonthOutlinedIcon />
-                    Monthly Rate: {result.monthly_rate_pct}%
-                  </li>
-
-                  <li key={result.yearly_rate_pct}>
-                    <CalendarMonthOutlinedIcon />
-                    Yearly Rate: {result.yearly_rate_pct}%
-                  </li>
-                </ul>
-              </div>
-            ))
-          )}
-        </Grid2>
-      </Container>
-    </Box>
+                    <li key={result.yearly_rate_pct}>
+                      <Typography
+                        variant="h6"
+                        sx={{ typography: { lg: "h6", sm: "h7", xs: "body1" } }}
+                      >
+                        <CalendarMonthOutlinedIcon /> Yearly Rate:&nbsp;{" "}
+                        {result.yearly_rate_pct}%
+                      </Typography>
+                    </li>
+                  </ul>
+                </Box>
+              ))
+            )}
+          </Grid2>
+        </Container>
+      </Box>
+    </Root>
   );
 };
 
