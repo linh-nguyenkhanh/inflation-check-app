@@ -37,9 +37,10 @@ const Root = styled("div")(({ theme }) => ({
   // md, medium: 900px
   [theme.breakpoints.up("md")]: {
     position: "relative",
-    left: "50%",
+    left: "30%",
     transform: "translateX(-50%)",
     width: 500,
+   
   },
   // lg, large: 1200px
   [theme.breakpoints.up("lg")]: {
