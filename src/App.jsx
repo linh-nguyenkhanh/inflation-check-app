@@ -22,7 +22,6 @@ import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 // xs, extra-small: 0px
 // xl, extra-large: 1536px
 const Root = styled("div")(({ theme }) => ({
-  padding: theme.spacing(1),
   // sm, small: 600px
   [theme.breakpoints.up("sm")]: {
     position: "absolute",
@@ -40,11 +39,11 @@ const Root = styled("div")(({ theme }) => ({
     left: "30%",
     transform: "translateX(-50%)",
     width: 500,
-   
   },
   // lg, large: 1200px
   [theme.breakpoints.up("lg")]: {
     width: 600,
+    left: "20%",
   },
 }));
 
