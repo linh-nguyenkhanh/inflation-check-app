@@ -71,7 +71,7 @@ const App = () => {
       }
       setLoading(false);
     };
-    if (searchTerm.length > 0) {
+    if (searchTerm.length > 0 && searchResult.length === 0) {
       fetchFromAPI();
     }
   }, [searchTerm]);
