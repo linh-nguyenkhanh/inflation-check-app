@@ -61,7 +61,7 @@ const App = () => {
       try {
         const response = await fetch(`${BASE_URL}${searchTerm}`, {
           headers: {
-            "X-Api-Key": import.meta.env.VITE_APP_API_KEY,
+            "X-Api-Key": "ISUZaaHNb4qCUcB/M/FBSw==MYA7OWtNcUozm6pe",
           },
         });
         const data = await response.json();
