@@ -1,13 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { styled } from "@mui/material/styles";
-import {
-  Box,
-  Container,
-  Typography,
-  FormControl,
-  InputLabel,
-  Input,
-} from "@mui/material";
+import { Box, Container, Typography, FormControl, Input } from "@mui/material";
+
+import LightbulbIcon from "@mui/icons-material/Lightbulb";
 
 import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
 import TrendingUpOutlinedIcon from "@mui/icons-material/TrendingUpOutlined";
@@ -18,7 +13,11 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 
+import IconButton from "@mui/material/IconButton";
+import Tooltip from "@mui/material/Tooltip";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
+import Fade from "@mui/material/Fade";
+import Zoom from "@mui/material/Zoom";
 // xs, extra-small: 0px
 // xl, extra-large: 1536px
 const Root = styled("div")(({ theme }) => ({
@@ -105,9 +104,19 @@ const App = () => {
             sx={{ Typography: { lg: "h3", sm: "h4", xs: "h6" } }}
           >
             INFLATION CHECK
+            <Tooltip
+              title="Number of countries to search is 38"
+              sx={{ color: "white" }}
+              TransitionComponent={Fade}
+              TransitionProps={{ timeout: 900 }}
+              followCursor
+            >
+              <IconButton>
+                <LightbulbIcon />
+              </IconButton>
+            </Tooltip>
           </Typography>
           <FormControl sx={{ display: "flex", margin: "0px 60px" }}>
-            <InputLabel focused variant="outlined" htmlFor="search" />
             <Input
               type="text"
               sx={{
