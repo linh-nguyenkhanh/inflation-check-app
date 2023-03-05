@@ -105,7 +105,7 @@ const App = () => {
           >
             INFLATION CHECK
             <Tooltip
-              title="Number of countries to search is 38"
+              title="There are only 38 major countries to search"
               sx={{ color: "white" }}
               TransitionComponent={Fade}
               TransitionProps={{ timeout: 900 }}
