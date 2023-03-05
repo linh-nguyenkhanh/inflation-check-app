@@ -1,3 +1,27 @@
+## Description:
+
+### Technologies and tools used:
+* JavaSctipt
+    * React
+* HTML
+* CSS 
+     * MaterialUI
+    
+* n
+
+### App functionality overview:
+- This web displays my study information and projects I did do.
+- The app also show a more aesthetic feature of a web that Next.js brings about.
+
+### Demo Link 
+[Click to see](https://linhng-portfolio.vercel.app/)
+
+### Video Demo
+
+
+
+
+
 # Inflation Check App
 
 The purpose of this project is to know how to use API and various method of fetching API data in React. Also, I practice usign MUI components.
