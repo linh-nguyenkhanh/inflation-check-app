@@ -9,7 +9,7 @@
      * tooltip lib
 * Netlify
 
-## API source: https://api-ninjas.com/api/inflation
+### API source: https://api-ninjas.com/api/inflation
 The Inflation API provides current economic inflation data for <strong> 38 major countries</strong>. The stats are usually updated monthly - although certain countries may lag behind or update more infrequently.
 
 ### App functionality overview:
