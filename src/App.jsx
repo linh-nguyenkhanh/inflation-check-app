@@ -94,12 +94,14 @@ const App = () => {
             color: "white",
             borderRadius: "10px",
             padding: "30px 10px",
+            boxShadow: 5,
           }}
         >
           <Typography
             variant="h3"
             color="white"
             textAlign="center"
+            boxShadow={3}
             mb={2}
             sx={{ Typography: { lg: "h3", sm: "h4", xs: "h6" } }}
           >
